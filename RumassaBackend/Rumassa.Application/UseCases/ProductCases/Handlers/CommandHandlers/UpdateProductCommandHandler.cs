@@ -28,13 +28,11 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
             {
                 if (request.Photos != null)
                 {
-                    var photoPaths = product.PhotoPaths;
-                    foreach (var filePath in photoPaths)
+                    var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, product.Name);
+
+                    if (File.Exists(filePath))
                     {
-                        if (File.Exists(filePath))
-                        {
-                            File.Delete(filePath);
-                        }
+                        File.Delete(filePath);
                     }
 
                     var photosFile = request.Photos;
@@ -47,7 +45,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                         foreach (var photoFile in photosFile)
                         {
                             photoName = Guid.NewGuid().ToString() + Path.GetExtension(photoFile.FileName);
-                            photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"ProductPhotos", photoName);
+                            photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, request.Name, photoName);
 
                             using (var stream = new FileStream(photoPath, FileMode.Create))
                             {
@@ -57,7 +55,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                             photosPaths.Add(photoPath); // Add photo path to the list
                         }
 
-                        product.PhotoPaths = photoPaths;
+                        product.PhotoPaths = photosPaths;
                     }
                     catch (Exception ex)
                     {
