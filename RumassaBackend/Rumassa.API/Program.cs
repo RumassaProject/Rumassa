@@ -25,6 +25,8 @@ namespace Rumassa.API
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
+
             app.UseAuthorization();
 
 
