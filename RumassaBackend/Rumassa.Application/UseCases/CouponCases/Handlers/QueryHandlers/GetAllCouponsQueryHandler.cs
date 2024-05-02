@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
 {
-    public class GetAllCouponsQueryHandler : IRequestHandler<GetAllCouponsQuery, List<Coupon>>
+    public class GetAllCouponsQueryHandler : IRequestHandler<GetAllCouponsQuery, IEnumerable<Coupon>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -21,7 +21,7 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Coupon>> Handle(GetAllCouponsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Coupon>> Handle(GetAllCouponsQuery request, CancellationToken cancellationToken)
         {
             return await _context.Coupons.ToListAsync(cancellationToken);
         }

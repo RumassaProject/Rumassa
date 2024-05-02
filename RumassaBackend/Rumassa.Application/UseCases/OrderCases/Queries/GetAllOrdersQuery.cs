@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.OrderCases.Queries
 {
-    public class GetAllOrdersQuery : IRequest<List<Order>>
+    public class GetAllOrdersQuery : IRequest<IEnumerable<Order>>
     {
     }
 }

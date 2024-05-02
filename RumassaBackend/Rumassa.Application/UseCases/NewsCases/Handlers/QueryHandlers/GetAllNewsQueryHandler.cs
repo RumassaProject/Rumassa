@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.NewsCases.Handlers.QueryHandlers
 {
-    public class GetAllNewsQueryHandler : IRequestHandler<GetAllNewsQuery, List<News>>
+    public class GetAllNewsQueryHandler : IRequestHandler<GetAllNewsQuery, IEnumerable<News>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -21,7 +21,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<News>> Handle(GetAllNewsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<News>> Handle(GetAllNewsQuery request, CancellationToken cancellationToken)
         {
             return await _context.News
                     .Skip(request.PageIndex - 1)
