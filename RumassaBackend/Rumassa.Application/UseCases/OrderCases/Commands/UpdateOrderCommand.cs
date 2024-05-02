@@ -1,13 +1,14 @@
-﻿using Rumassa.Domain.Entities.Auth;
+﻿using MediatR;
+using Rumassa.Domain.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rumassa.Domain.Entities
+namespace Rumassa.Application.UseCases.OrderCases.Commands
 {
-    public class Order
+    public class UpdateOrderCommand : IRequest<ResponseModel>
     {
         public Guid Id { get; set; }
         public DateTimeOffset Date { get; set; }
@@ -17,7 +18,5 @@ namespace Rumassa.Domain.Entities
         public string PaymentMethod { get; set; }
         public int TotalAmount { get; set; }
         public Guid UserId { get; set; }
-        public virtual User User { get; set; }
-        public virtual List<Product> Products { get; set; }
     }
 }
