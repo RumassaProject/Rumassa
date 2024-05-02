@@ -6,7 +6,7 @@ using Rumassa.Domain.Entities;
 
 namespace Rumassa.Application.UseCases.OrderCases.Handlers.QueryHandlers
 {
-    public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, Order>
+    public class GetOrderByIdQueryHandler : IRequestHandler<GetdeliveryByIdQuery, Order>
     {
         private readonly IRumassaDbContext _context;
 
@@ -15,7 +15,7 @@ namespace Rumassa.Application.UseCases.OrderCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<Order> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Order> Handle(GetdeliveryByIdQuery request, CancellationToken cancellationToken)
         {
             var order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == request.Id);
 

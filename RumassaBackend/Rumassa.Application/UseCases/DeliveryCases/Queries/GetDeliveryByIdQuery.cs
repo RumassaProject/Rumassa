@@ -1,16 +1,17 @@
 ﻿using MediatR;
 using Rumassa.Domain.Entities;
-using Rumassa.Domain.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rumassa.Application.UseCases.OrderCases.Queries
+namespace Rumassa.Application.UseCases.DeliveryCases.Queries
 {
-    public class GetdeliveryByIdQuery : IRequest<Order>
+    public class GetDeliveryByIdQuery : IRequest<Delivery>
     {
+
         public Guid Id { get; set; }
+
     }
 }
