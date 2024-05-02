@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
 {
     public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public CreateCategoryCommandHandler(IRumassaDbContext context)
@@ -30,7 +29,7 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
                 {
                     Name = request.Name,
                     ProductId = request.ProductId,
-                    CatalogId = request.CatalogId,
+                    CatalogId = request.CatalogId
                 };
 
                 await _context.Categories.AddAsync(category, cancellationToken);
@@ -50,6 +49,5 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

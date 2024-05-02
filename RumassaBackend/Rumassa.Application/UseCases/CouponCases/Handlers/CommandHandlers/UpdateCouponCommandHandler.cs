@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
 {
     public class UpdateCouponCommandHandler : IRequestHandler<UpdateCouponCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public UpdateCouponCommandHandler(IRumassaDbContext context)
@@ -51,6 +50,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

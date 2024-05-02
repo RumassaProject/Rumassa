@@ -14,6 +14,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Commands
         public DateTimeOffset ExpireDate { get; set; }
         public int Limit { get; set; }
         public short Percent { get; set; }
-
     }
 }

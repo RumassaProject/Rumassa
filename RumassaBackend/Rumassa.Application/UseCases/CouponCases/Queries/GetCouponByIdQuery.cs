@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Queries
 {
     public class GetCouponByIdQuery : IRequest<Coupon>
     {
-
         public Guid Id { get; set; }
 
     }

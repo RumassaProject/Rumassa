@@ -12,9 +12,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
 {
-    public class UpdateCatalogCommandHandler:IRequestHandler<UpdateCatalogCommand, ResponseModel>
+    public class UpdateCatalogCommandHandler : IRequestHandler<UpdateCatalogCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public UpdateCatalogCommandHandler(IRumassaDbContext context)
@@ -48,6 +47,5 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

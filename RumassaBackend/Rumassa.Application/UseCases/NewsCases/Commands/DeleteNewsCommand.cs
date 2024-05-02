@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rumassa.Application.UseCases.CatalogCases.Commands
+namespace Rumassa.Application.UseCases.NewsCases.Commands
 {
-    public class CreateCatalogCommand : IRequest<ResponseModel>
+    public class DeleteNewsCommand : IRequest<ResponseModel>
     {
-        public string Name { get; set; }
-
+        public Guid Id { get; set; }
     }
 }

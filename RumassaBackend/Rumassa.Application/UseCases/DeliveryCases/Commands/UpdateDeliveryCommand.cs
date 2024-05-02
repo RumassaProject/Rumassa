@@ -19,6 +19,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Commands
         public string Index { get; set; }
         public string StreetHouse { get; set; }
         public string Details { get; set; }
-
     }
 }

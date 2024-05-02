@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.QueryHandlers
 {
     public class GetAllCategoriesQueryHandler: IRequestHandler<GetAllCategoriesQuery, List<Category>>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetAllCategoriesQueryHandler(IRumassaDbContext context)
@@ -26,6 +25,5 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.QueryHandlers
         {
             return await _context.Categories.ToListAsync(cancellationToken);
         }
-
     }
 }

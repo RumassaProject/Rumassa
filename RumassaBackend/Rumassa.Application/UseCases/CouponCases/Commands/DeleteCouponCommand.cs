@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Commands
 {
     public class DeleteCouponCommand : IRequest<ResponseModel>
     {
-
         public Guid Id { get; set; }
 
     }

@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Commands
 {
     public class CreateDeliveryCommand : IRequest<ResponseModel>
     {
-
         public string FullName { get; set; }
         public string Email { get; set; }
         public string Country { get; set; }
@@ -19,6 +18,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Commands
         public string Index { get; set; }
         public string StreetHouse { get; set; }
         public string Details { get; set; }
-
     }
 }

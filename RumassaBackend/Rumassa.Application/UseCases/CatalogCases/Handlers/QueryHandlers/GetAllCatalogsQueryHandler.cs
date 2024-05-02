@@ -12,9 +12,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Handlers.QueryHandlers
 {
-    public class GetAllCatalogsQueryHandler: IRequestHandler<GetAllCatalogsQuery, List<Catalog>>
+    public class GetAllCatalogsQueryHandler : IRequestHandler<GetAllCatalogsQuery, List<Catalog>>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetAllCatalogsQueryHandler(IRumassaDbContext context)
@@ -26,6 +25,5 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.QueryHandlers
         {
             return await _context.Catalogs.ToListAsync(cancellationToken);
         }
-
     }
 }

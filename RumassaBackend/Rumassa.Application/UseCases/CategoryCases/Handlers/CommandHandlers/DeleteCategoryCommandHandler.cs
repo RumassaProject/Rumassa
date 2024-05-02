@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
 {
     public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public DeleteCategoryCommandHandler(IRumassaDbContext context)
@@ -45,6 +44,5 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

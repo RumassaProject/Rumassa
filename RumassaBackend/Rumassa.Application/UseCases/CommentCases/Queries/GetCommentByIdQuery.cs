@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Queries
 {
     public class GetCommentByIdQuery : IRequest<Comment>
     {
-
         public Guid Id { get; set; }
 
     }

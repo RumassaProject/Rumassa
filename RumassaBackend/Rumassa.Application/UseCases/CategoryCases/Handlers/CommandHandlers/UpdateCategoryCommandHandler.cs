@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
 {
     public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public UpdateCategoryCommandHandler(IRumassaDbContext context)
@@ -50,6 +49,5 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }
