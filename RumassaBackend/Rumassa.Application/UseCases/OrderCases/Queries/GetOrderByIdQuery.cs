@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.OrderCases.Queries
 {
-    public class GetdeliveryByIdQuery : IRequest<Order>
+    public class GetOrderByIdQuery : IRequest<Order>
     {
         public Guid Id { get; set; }
     }
