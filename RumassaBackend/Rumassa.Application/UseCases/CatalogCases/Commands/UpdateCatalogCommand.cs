@@ -10,9 +10,7 @@ namespace Rumassa.Application.UseCases.CatalogCases.Commands
 {
     public class UpdateCatalogCommand:IRequest<ResponseModel>
     {
-
         public Guid Id { get; set; }
         public string Name { get; set; }
-
     }
 }

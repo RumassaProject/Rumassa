@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
 {
     public class GetAllCommentsQueryHandler : IRequestHandler<GetAllCommentsQuery, List<Comment>>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetAllCommentsQueryHandler(IRumassaDbContext context)
@@ -26,6 +25,5 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
         {
             return await _context.Comments.ToListAsync(cancellationToken);
         }
-
     }
 }

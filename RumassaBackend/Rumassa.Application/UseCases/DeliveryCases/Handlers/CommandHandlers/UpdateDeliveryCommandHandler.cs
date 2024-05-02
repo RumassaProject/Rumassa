@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.CommandHandlers
 {
     public class UpdateDeliveryCommandHandler : IRequestHandler<UpdateDeliveryCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public UpdateDeliveryCommandHandler(IRumassaDbContext context)
@@ -55,6 +54,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

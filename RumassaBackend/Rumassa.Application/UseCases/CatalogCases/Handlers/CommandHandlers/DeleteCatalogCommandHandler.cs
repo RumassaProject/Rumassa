@@ -12,9 +12,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
 {
-    public class DeleteCatalogCommandHandler:IRequestHandler<DeleteCatalogCommand, ResponseModel>
+    public class DeleteCatalogCommandHandler : IRequestHandler<DeleteCatalogCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public DeleteCatalogCommandHandler(IRumassaDbContext context)
@@ -45,6 +44,5 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.QueryHandlers
 {
     public class GetCatalogByIdQueryHandler : IRequestHandler<GetCatalogByIdQuery, Catalog>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetCatalogByIdQueryHandler(IRumassaDbContext context)
@@ -33,6 +32,5 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.QueryHandlers
 
             throw new Exception("Catalog Not Found!");
         }
-
     }
 }

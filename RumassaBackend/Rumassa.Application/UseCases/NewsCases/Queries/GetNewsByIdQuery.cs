@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rumassa.Application.UseCases.CatalogCases.Queries
+namespace Rumassa.Application.UseCases.NewsCases.Queries
 {
-    public class GetCatalogByIdQuery : IRequest<Catalog>
+    public class GetNewsByIdQuery : IRequest<News>
     {
         public Guid Id { get; set; }
-
     }
 }

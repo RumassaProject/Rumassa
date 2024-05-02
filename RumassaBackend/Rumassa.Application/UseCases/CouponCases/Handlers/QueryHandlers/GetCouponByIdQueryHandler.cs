@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
 {
     public class GetCouponByIdQueryHandler : IRequestHandler<GetCouponByIdQuery, Coupon>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetCouponByIdQueryHandler(IRumassaDbContext context)
@@ -33,6 +32,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
 
             throw new Exception("Coupon Not Found!");
         }
-
     }
 }

@@ -24,7 +24,7 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
             {
                 var catalog = new Catalog()
                 {
-                    Name = request.Name,
+                    Name = request.Name
                 };
 
                 await _context.Catalogs.AddAsync(catalog, cancellationToken);

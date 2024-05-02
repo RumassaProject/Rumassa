@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Commands
 {
-    public class DeleteCatalogCommand:IRequest<ResponseModel>
+    public class DeleteCatalogCommand : IRequest<ResponseModel>
     {
-
         public Guid Id { get; set; }
 
     }
