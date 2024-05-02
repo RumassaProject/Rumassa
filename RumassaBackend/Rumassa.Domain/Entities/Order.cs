@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rumassa.Domain.Entities.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,16 @@ namespace Rumassa.Domain.Entities
 {
     public class Order
     {
-
-        public int OrderId { get; set; }
-        public int UserId { get; set; }
-        public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
-        public double TotalPrice { get; set; }
+        public Guid Id { get; set; }
+        public DateTimeOffset Date { get; set; }
         public double OrderPrice { get; set; }
         public double DeliveryPrice { get; set; }
-        public string PaymentType { get; set; }
-        public int Amount { get; set; }
+        public double TotalPrice { get; set; }
+        public string PaymentMethod { get; set; }
+        public int TotalAmount { get; set; }
+        public Guid UserId { get; set; }
+        public virtual User User { get; set; }
+        public virtual List<Product> Products { get; set; }
 
     }
 }
