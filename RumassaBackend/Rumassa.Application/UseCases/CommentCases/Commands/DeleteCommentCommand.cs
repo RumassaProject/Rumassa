@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Commands
 {
     public class DeleteCommentCommand : IRequest<ResponseModel>
     {
-
         public Guid Id { get; set; }
 
     }

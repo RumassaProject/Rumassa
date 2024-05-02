@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Commands
 {
-    public class CreateCatalogCommand:IRequest<ResponseModel>
+    public class CreateCatalogCommand : IRequest<ResponseModel>
     {
-
         public string Name { get; set; }
 
     }

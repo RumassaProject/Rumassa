@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
 {
     public class GetDeliveryByIdQueryHandler : IRequestHandler<GetDeliveryByIdQuery, Delivery>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetDeliveryByIdQueryHandler(IRumassaDbContext context)
@@ -33,6 +32,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
 
             throw new Exception("Delivery Not Found!");
         }
-
     }
 }

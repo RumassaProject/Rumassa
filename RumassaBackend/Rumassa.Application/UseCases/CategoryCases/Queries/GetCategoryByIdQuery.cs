@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Queries
 {
     public class GetCategoryByIdQuery : IRequest<Category>
     {
-
         public Guid Id { get; set; }
 
     }

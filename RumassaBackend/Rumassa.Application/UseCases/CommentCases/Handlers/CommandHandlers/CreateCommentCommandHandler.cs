@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.CommandHandlers
 {
     public class CreateCommentCommandHandler : IRequestHandler<CreateCommentCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public CreateCommentCommandHandler(IRumassaDbContext context)
@@ -52,6 +51,5 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

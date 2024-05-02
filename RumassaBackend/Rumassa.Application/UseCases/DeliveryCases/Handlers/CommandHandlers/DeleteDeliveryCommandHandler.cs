@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.CommandHandlers
 {
     public class DeleteDeliveryCommandHandler : IRequestHandler<DeleteDeliveryCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public DeleteDeliveryCommandHandler(IRumassaDbContext context)
@@ -45,6 +44,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

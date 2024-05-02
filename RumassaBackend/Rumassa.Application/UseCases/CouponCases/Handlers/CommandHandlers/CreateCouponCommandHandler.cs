@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
 {
     public class CreateCouponCommandHandler : IRequestHandler<CreateCouponCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public CreateCouponCommandHandler(IRumassaDbContext context)
@@ -51,6 +50,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

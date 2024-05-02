@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
 {
     public class GetCommentByIdQueryHandler : IRequestHandler<GetCommentByIdQuery, Comment>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetCommentByIdQueryHandler(IRumassaDbContext context)
@@ -33,6 +32,5 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
 
             throw new Exception("Comment Not Found!");
         }
-
     }
 }

@@ -10,7 +10,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Commands
 {
     public class DeleteDeliveryCommand : IRequest<ResponseModel>
     {
-
         public Guid Id { get; set; }
 
     }

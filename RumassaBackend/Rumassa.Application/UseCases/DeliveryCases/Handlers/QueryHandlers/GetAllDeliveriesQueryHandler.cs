@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
 {
     public class GetAllDeliveriesQueryHandler : IRequestHandler<GetAllDeliveriesQuery, List<Delivery>>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetAllDeliveriesQueryHandler(IRumassaDbContext context)
@@ -26,6 +25,5 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
         {
             return await _context.Deliveries.ToListAsync(cancellationToken);
         }
-
     }
 }

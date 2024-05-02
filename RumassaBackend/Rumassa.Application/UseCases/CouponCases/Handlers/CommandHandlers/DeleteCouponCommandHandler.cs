@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
 {
     public class DeleteCouponCommandHandler : IRequestHandler<DeleteCouponCommand, ResponseModel>
     {
-
         private readonly IRumassaDbContext _context;
 
         public DeleteCouponCommandHandler(IRumassaDbContext context)
@@ -45,6 +44,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.CommandHandlers
                 StatusCode = 400
             };
         }
-
     }
 }

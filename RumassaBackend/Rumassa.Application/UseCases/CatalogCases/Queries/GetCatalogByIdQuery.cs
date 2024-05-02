@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CatalogCases.Queries
 {
-    public class GetCatalogByIdQuery:IRequest<Catalog>
+    public class GetCatalogByIdQuery : IRequest<Catalog>
     {
-
         public Guid Id { get; set; }
 
     }

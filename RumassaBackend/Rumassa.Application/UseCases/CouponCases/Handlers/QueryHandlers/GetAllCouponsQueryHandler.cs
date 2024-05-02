@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
 {
     public class GetAllCouponsQueryHandler : IRequestHandler<GetAllCouponsQuery, List<Coupon>>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetAllCouponsQueryHandler(IRumassaDbContext context)
@@ -26,6 +25,5 @@ namespace Rumassa.Application.UseCases.CouponCases.Handlers.QueryHandlers
         {
             return await _context.Coupons.ToListAsync(cancellationToken);
         }
-
     }
 }

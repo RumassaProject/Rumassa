@@ -14,7 +14,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.QueryHandlers
 {
     public class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByIdQuery, Category>
     {
-
         private readonly IRumassaDbContext _context;
 
         public GetCategoryByIdQueryHandler(IRumassaDbContext context)
@@ -33,6 +32,5 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.QueryHandlers
 
             throw new Exception("Category Not Found!");
         }
-
     }
 }
