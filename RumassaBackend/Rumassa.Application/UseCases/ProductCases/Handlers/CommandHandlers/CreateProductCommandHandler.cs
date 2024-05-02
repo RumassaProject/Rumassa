@@ -34,7 +34,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                     foreach (var photoFile in photosFile)
                     {
                         photoName = Guid.NewGuid().ToString() + Path.GetExtension(photoFile.FileName);
-                        photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"ProductPhotos", photoName);
+                        photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, request.Name, photoName);
 
                         using (var stream = new FileStream(photoPath, FileMode.Create))
                         {

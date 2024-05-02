@@ -24,14 +24,11 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
 
             if (product != null)
             {
-                var photoPaths = product.PhotoPaths;
+                var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, product.Name);
 
-                foreach(var photoPath in photoPaths)
+                if (File.Exists(filePath))
                 {
-                    if (File.Exists(photoPath))
-                    {
-                        File.Delete(photoPath);
-                    }
+                    File.Delete(filePath);
                 }
 
                 _context.Products.Remove(product);
