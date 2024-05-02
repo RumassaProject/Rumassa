@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-oplata',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './oplata.component.html',
   styleUrl: './oplata.component.scss'
 })
-export class OplataComponent {
+export class OplataComponent{
 
+  ss='noti'
+  close(){
+   this.ss='cs'
+  }
 }
