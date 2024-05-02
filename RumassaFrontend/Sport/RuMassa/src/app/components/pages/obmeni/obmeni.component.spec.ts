@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ObmenPageComponent } from './obmen-page.component';
+import { ObmeniComponent } from './obmeni.component';
 
-describe('ObmenPageComponent', () => {
-  let component: ObmenPageComponent;
-  let fixture: ComponentFixture<ObmenPageComponent>;
+describe('ObmeniComponent', () => {
+  let component: ObmeniComponent;
+  let fixture: ComponentFixture<ObmeniComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ObmenPageComponent]
+      imports: [ObmeniComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ObmenPageComponent);
+    fixture = TestBed.createComponent(ObmeniComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
