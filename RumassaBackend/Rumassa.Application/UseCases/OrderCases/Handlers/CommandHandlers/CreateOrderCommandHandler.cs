@@ -24,7 +24,7 @@ namespace Rumassa.Application.UseCases.OrderCases.Handlers.CommandHandlers
         {
             if (request != null)
             {
-                var order = new Order
+                var order = new Order()
                 {
                     Date = request.Date,
                     OrderPrice = request.OrderPrice,
