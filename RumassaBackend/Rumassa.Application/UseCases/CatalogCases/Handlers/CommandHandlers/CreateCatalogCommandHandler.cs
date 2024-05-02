@@ -22,7 +22,7 @@ namespace Rumassa.Application.UseCases.CatalogCases.Handlers.CommandHandlers
         {
             if (request != null)
             {
-                var catalog = new Catalog
+                var catalog = new Catalog()
                 {
                     Name = request.Name,
                 };
