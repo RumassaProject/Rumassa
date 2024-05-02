@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.OrderCases.Handlers.QueryHandlers
 {
-    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, List<Order>>
+    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, IEnumerable<Order>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -20,7 +20,7 @@ namespace Rumassa.Application.UseCases.OrderCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Order>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Order>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
         {
             return await _context.Orders.ToListAsync(cancellationToken);
         }

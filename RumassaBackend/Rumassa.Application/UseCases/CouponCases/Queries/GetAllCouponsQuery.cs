@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CouponCases.Queries
 {
-    public class GetAllCouponsQuery : IRequest<List<Coupon>>
+    public class GetAllCouponsQuery : IRequest<IEnumerable<Coupon>>
     {
     }
 }

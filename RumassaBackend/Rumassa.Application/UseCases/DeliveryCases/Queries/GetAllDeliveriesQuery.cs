@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.DeliveryCases.Queries
 {
-    public class GetAllDeliveriesQuery : IRequest<List<Delivery>>
+    public class GetAllDeliveriesQuery : IRequest<IEnumerable<Delivery>>
     {
     }
 }

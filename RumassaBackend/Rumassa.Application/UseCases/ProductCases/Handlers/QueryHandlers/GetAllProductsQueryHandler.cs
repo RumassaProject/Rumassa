@@ -6,7 +6,7 @@ using Rumassa.Domain.Entities;
 
 namespace Rumassa.Application.UseCases.ProductCases.Handlers.QueryHandlers
 {
-    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<Product>>
+    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<Product>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -15,7 +15,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             return await _context.Products
                     .Skip(request.PageIndex - 1)

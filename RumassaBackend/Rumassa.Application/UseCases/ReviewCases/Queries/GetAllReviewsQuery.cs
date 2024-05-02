@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.ReviewCases.Queries
 {
-    public class GetAllReviewsQuery : IRequest<List<Review>>
+    public class GetAllReviewsQuery : IRequest<IEnumerable<Review>>
     {
     }
 }

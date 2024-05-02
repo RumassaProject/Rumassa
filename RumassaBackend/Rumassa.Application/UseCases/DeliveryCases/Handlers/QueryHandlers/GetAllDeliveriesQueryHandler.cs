@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
 {
-    public class GetAllDeliveriesQueryHandler : IRequestHandler<GetAllDeliveriesQuery, List<Delivery>>
+    public class GetAllDeliveriesQueryHandler : IRequestHandler<GetAllDeliveriesQuery, IEnumerable<Delivery>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -21,7 +21,7 @@ namespace Rumassa.Application.UseCases.DeliveryCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Delivery>> Handle(GetAllDeliveriesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Delivery>> Handle(GetAllDeliveriesQuery request, CancellationToken cancellationToken)
         {
             return await _context.Deliveries.ToListAsync(cancellationToken);
         }
