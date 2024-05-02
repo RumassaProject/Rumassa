@@ -1,15 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Rumassa.Application.Abstractions;
 using Rumassa.Domain.Entities;
+using Rumassa.Domain.Entities.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rumassa.Application.Abstractions
+namespace Rumassa.Infrastructure.Persistance
 {
-    public interface IRumassaDbContext
+    public class RumassaDbContext : IdentityDbContext<User, Role, Guid>, IRumassaDbContext
     {
+        public RumassaDbContext(DbContextOptions<RumassaDbContext> options)
+            : base(options)
+        {
+            Database.Migrate();
+        }
+
         public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -20,6 +29,5 @@ namespace Rumassa.Application.Abstractions
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductDetails> ProductDetails { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
