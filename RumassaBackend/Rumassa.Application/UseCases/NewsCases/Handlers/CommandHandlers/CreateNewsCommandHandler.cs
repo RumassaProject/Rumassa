@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Rumassa.Application.Abstractions;
 using Rumassa.Application.UseCases.NewsCases.Commands;
 using Rumassa.Domain.Entities;
@@ -10,12 +11,12 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
     public class CreateNewsCommandHandler : IRequestHandler<CreateNewsCommand, ResponseModel>
     {
         private readonly IRumassaDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHostEnvironment _hostEnvironment;
 
-        public CreateNewsCommandHandler(IRumassaDbContext context, IWebHostEnvironment webHostEnvironment)
+        public CreateNewsCommandHandler(IRumassaDbContext context, IHostEnvironment hostEnvironment)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<ResponseModel> Handle(CreateNewsCommand request, CancellationToken cancellationToken)
@@ -29,7 +30,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                 try
                 {
                     fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
+                    filePath = Path.Combine(_hostEnvironment.ContentRootPath, "ProductPhotos", fileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);

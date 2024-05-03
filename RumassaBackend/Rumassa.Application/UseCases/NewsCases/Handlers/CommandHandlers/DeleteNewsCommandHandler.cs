@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Rumassa.Application.Abstractions;
 using Rumassa.Application.UseCases.NewsCases.Commands;
@@ -10,12 +9,10 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
     public class DeleteNewsCommandHandler : IRequestHandler<DeleteNewsCommand, ResponseModel>
     {
         private readonly IRumassaDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DeleteNewsCommandHandler(IRumassaDbContext context, IWebHostEnvironment webHostEnvironment)
+        public DeleteNewsCommandHandler(IRumassaDbContext context)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<ResponseModel> Handle(DeleteNewsCommand request, CancellationToken cancellationToken)
