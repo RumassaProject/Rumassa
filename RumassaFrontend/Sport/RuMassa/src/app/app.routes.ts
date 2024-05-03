@@ -7,6 +7,7 @@ import { OplataComponent } from './components/pages/oplata/oplata.component';
 import { SkidkiComponent } from './components/pages/skidki/skidki.component';
 import { DostavkaComponent } from './components/pages/dostavka/dostavka.component';
 import { LoginComponent } from './components/login/login.component';
+import { KakoformitComponent } from './components/pages/kakoformit/kakoformit.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path:'dostavka', component:DostavkaComponent},
     {path:'login', component:LoginComponent},
 
+    {path:'kakoformit', component:KakoformitComponent},
 
     {path:'**', component:NotFound404Component}
 
