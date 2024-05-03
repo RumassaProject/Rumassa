@@ -14,7 +14,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Commands
         public Guid Id { get; set; }
         public string Name { get; set; }
         public List<IFormFile> Photos { get; set; }
-        public Guid OrderId { get; set; }
-        public Guid NewsId { get; set; }
+        public Guid? OrderId { get; set; }
+        public Guid? NewsId { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace Rumassa.Application.UseCases.CategoryCases.Commands
     public class CreateCategoryCommand : IRequest<ResponseModel>
     {
         public string Name { get; set; }
-        public Guid ProductId { get; set; }
-        public Guid CatalogId { get; set; }
+        public Guid? ProductId { get; set; }
+        public Guid? CatalogId { get; set; }
 
     }
 }
