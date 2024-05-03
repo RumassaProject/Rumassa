@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.ProductDetailsCases.Handlers.QueryHandlers
 {
-    public class GetAllProductDetailsQueryHandler : IRequestHandler<GetAllProductDetailsQuery, List<ProductDetails>>
+    public class GetAllProductDetailsQueryHandler : IRequestHandler<GetAllProductDetailsQuery, IEnumerable<ProductDetails>>
     {
 
         private readonly IRumassaDbContext _context;
@@ -22,7 +22,7 @@ namespace Rumassa.Application.UseCases.ProductDetailsCases.Handlers.QueryHandler
             _context = context;
         }
 
-        public async Task<List<ProductDetails>> Handle(GetAllProductDetailsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductDetails>> Handle(GetAllProductDetailsQuery request, CancellationToken cancellationToken)
         {
             return await _context.ProductDetails.ToListAsync(cancellationToken);
         }

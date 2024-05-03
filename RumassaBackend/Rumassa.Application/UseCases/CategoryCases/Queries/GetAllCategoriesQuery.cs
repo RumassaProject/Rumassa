@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CategoryCases.Queries
 {
-    public class GetAllCategoriesQuery : IRequest<List<Category>>
+    public class GetAllCategoriesQuery : IRequest<IEnumerable<Category>>
     {
     }
 }

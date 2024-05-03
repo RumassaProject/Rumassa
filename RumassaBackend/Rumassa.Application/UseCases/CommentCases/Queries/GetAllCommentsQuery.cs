@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CommentCases.Queries
 {
-    public class GetAllCommentsQuery : IRequest<List<Comment>>
+    public class GetAllCommentsQuery : IRequest<IEnumerable<Comment>>
     {
     }
 }

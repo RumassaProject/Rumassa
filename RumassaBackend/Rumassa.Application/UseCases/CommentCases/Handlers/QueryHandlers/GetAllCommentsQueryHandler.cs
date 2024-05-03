@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
 {
-    public class GetAllCommentsQueryHandler : IRequestHandler<GetAllCommentsQuery, List<Comment>>
+    public class GetAllCommentsQueryHandler : IRequestHandler<GetAllCommentsQuery, IEnumerable<Comment>>
     {
         private readonly IRumassaDbContext _context;
 
@@ -21,7 +21,7 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Comment>> Handle(GetAllCommentsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Comment>> Handle(GetAllCommentsQuery request, CancellationToken cancellationToken)
         {
             return await _context.Comments.ToListAsync(cancellationToken);
         }
