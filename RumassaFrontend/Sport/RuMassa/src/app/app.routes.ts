@@ -5,6 +5,7 @@ import { NotFound404Component } from './components/pages/not-found404/not-found4
 import { ObmeniComponent } from './components/pages/obmeni/obmeni.component';
 import { OplataComponent } from './components/pages/oplata/oplata.component';
 import { SkidkiComponent } from './components/pages/skidki/skidki.component';
+import { DostavkaComponent } from './components/pages/dostavka/dostavka.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path:'oplata', component:OplataComponent},
     {path:'obmeni', component:ObmeniComponent},
     {path:'skidki', component:SkidkiComponent},
+    {path:'dostavka', component:DostavkaComponent},
 
     {path:'**', component:NotFound404Component}
 
