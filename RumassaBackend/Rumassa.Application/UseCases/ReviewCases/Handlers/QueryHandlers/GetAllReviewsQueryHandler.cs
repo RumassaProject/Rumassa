@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.ReviewCases.Handlers.QueryHandlers
 {
-    public class GetAllReviewsQueryHandler : IRequestHandler<GetAllReviewsQuery, List<Review>>
+    public class GetAllReviewsQueryHandler : IRequestHandler<GetAllReviewsQuery, IEnumerable<Review>>
     {
 
         private readonly IRumassaDbContext _context;
@@ -22,7 +22,7 @@ namespace Rumassa.Application.UseCases.ReviewCases.Handlers.QueryHandlers
             _context = context;
         }
 
-        public async Task<List<Review>> Handle(GetAllReviewsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Review>> Handle(GetAllReviewsQuery request, CancellationToken cancellationToken)
         {
             return await _context.Reviews.ToListAsync(cancellationToken);
         }

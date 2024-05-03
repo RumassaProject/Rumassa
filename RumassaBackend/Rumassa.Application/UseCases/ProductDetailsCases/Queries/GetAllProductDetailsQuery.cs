@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.ProductDetailsCases.Queries
 {
-    public class GetAllProductDetailsQuery : IRequest<List<ProductDetails>>
+    public class GetAllProductDetailsQuery : IRequest<IEnumerable<ProductDetails>>
     {
     }
 }
