@@ -16,7 +16,7 @@ namespace Rumassa.Domain.Entities
         public double TotalPrice { get; set; }
         public string PaymentMethod { get; set; }
         public int TotalAmount { get; set; }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public virtual User User { get; set; }
         public virtual List<Product> Products { get; set; }
     }
