@@ -9,6 +9,7 @@ import { DostavkaComponent } from './components/pages/dostavka/dostavka.componen
 import { LoginComponent } from './components/login/login.component';
 import { KakoformitComponent } from './components/pages/kakoformit/kakoformit.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -19,8 +20,8 @@ export const routes: Routes = [
     {path:'dostavka', component:DostavkaComponent},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegistrationComponent},
-
     {path:'kakoformit', component:KakoformitComponent},
+    {path:'contacts', component:ContactsComponent},
 
     {path:'**', component:NotFound404Component}
 
