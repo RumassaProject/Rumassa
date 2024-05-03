@@ -42,9 +42,12 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Product> GetById()
+        public async Task<Product> GetById(Guid id)
         {
-            var result = await _mediator.Send(new GetProductByIdQuery());
+            var result = await _mediator.Send(new GetProductByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

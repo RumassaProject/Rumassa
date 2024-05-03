@@ -12,7 +12,7 @@ namespace Rumassa.Domain.Entities
         public string Name { get; set; }
         public Guid? ProductId { get; set; }
         public Guid? CatalogId { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual Catalog Catalog { get; set; }
+        public virtual Product? Product { get; set; }
+        public virtual Catalog? Catalog { get; set; }
     }
 }
