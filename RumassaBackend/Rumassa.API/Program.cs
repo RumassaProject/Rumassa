@@ -4,6 +4,7 @@ using Rumassa.Application;
 using Rumassa.Domain.Entities.Auth;
 using Rumassa.Infrastructure;
 using Rumassa.Infrastructure.Persistance;
+using Serilog;
 
 namespace Rumassa.API
 {
@@ -40,6 +41,13 @@ namespace Rumassa.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            var logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .CreateLogger();
+            builder.Logging.ClearProviders();
+            builder.Logging.AddSerilog(logger);
+            builder.Services.AddControllers();
 
 
             var app = builder.Build();
