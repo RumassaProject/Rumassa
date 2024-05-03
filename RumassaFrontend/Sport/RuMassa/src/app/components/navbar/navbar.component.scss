@@ -49,9 +49,10 @@ header {
 
 .nav-search {
   display: flex;
-  width: 750px;
+  width: 840px;
   height: 45px;
   border: 1px solid #D3D3D3;
+  margin-left: 28px;
 }
 
 .logos a {
@@ -59,8 +60,7 @@ header {
 }
 
 .search-input {
-  max-width: 740px;
-  width: 100%;
+  width: 840px;
   font-size: 1rem;
   border: none;
   outline: none;
@@ -83,7 +83,6 @@ header {
 
 .line2 {
   height: 72px;
-  margin-left: -40px; 
 }
 
 .banner {
@@ -103,14 +102,14 @@ header {
   color: white;
   font-size: 15px;
   margin-left: -4px;
-  padding-right: 20px;
+  padding-right: 14px;
 }
 
 .links {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 15px;
+  gap: 14px;
   flex-grow: 1;
   margin-left: 15px;
 }
