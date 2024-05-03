@@ -30,6 +30,7 @@ namespace Rumassa.API
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructure(builder.Configuration);
 
+
             builder.Services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<RumassaDbContext>()
                 .AddDefaultTokenProviders();
@@ -38,6 +39,8 @@ namespace Rumassa.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
 
             var app = builder.Build();
 

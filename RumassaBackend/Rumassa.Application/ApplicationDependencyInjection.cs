@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Rumassa.Application.UseCases.AuthService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Rumassa.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
     }
