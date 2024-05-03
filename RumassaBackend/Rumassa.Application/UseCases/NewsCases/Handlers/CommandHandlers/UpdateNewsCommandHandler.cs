@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Rumassa.Application.Abstractions;
 using Rumassa.Application.UseCases.CatalogCases.Commands;
 using Rumassa.Application.UseCases.NewsCases.Commands;
@@ -18,12 +19,12 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
     public class UpdateNewsCommandHandler : IRequestHandler<UpdateNewsCommand, ResponseModel>
     {
         private readonly IRumassaDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHostEnvironment _hostEnvironment;
 
-        public UpdateNewsCommandHandler(IRumassaDbContext context, IWebHostEnvironment webHostEnvironment)
+        public UpdateNewsCommandHandler(IRumassaDbContext context, IHostEnvironment hostEnvironment)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
         public async Task<ResponseModel> Handle(UpdateNewsCommand request, CancellationToken cancellationToken)
@@ -47,7 +48,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                     try
                     {
                         fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                        filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
+                        filePath = Path.Combine(_hostEnvironment.ContentRootPath, "ProductPhotos", fileName);
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);

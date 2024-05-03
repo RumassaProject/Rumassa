@@ -16,6 +16,6 @@ namespace Rumassa.Application.UseCases.NewsCases.Commands
         public IFormFile CardPhoto { get; set; }
         public DateTimeOffset Date { get; set; }
         public string Description { get; set; }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
     }
 }

@@ -27,17 +27,20 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Catalog>> GetAll(GetAllCatalogsQuery request)
+        public async Task<IEnumerable<Catalog>> GetAll()
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetAllCatalogsQuery());
 
             return result;
         }
 
         [HttpGet("{id}")]
-        public async Task<Catalog> GetById(GetCatalogByIdQuery request)
+        public async Task<Catalog> GetById(Guid id)
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetCatalogByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

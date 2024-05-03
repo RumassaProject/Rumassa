@@ -3,12 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ObmeniComponent } from './components/pages/obmeni/obmeni.component';
+import { RegistrationComponent } from './components/pages/registration/registration.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, FooterComponent, ObmeniComponent],
+
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, ObmeniComponent, RegistrationComponent, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

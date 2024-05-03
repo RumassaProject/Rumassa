@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rumassa.Application.UseCases.AuthService;
 using Rumassa.Domain.Entities.Auth;
 using Rumassa.Domain.Entities.DTOs;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -21,7 +22,7 @@ namespace Rumassa.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterDTO register)
         {
             if (!ModelState.IsValid)
@@ -29,13 +30,15 @@ namespace Rumassa.API.Controllers
                 throw new Exception();
             }
 
-
             var user = new User()
             {
-                Email = register.Email,
+                UserName = register.Name + register.Surname,
                 Name = register.Name,
-                UserName = register.Name,
                 Surname = register.Surname,
+                Email = register.Email,
+                Password = register.Password,
+                PhoneNumber = register.PhoneNumber,
+                Role = "User"
             };
 
             var result = await _userManager.CreateAsync(user, register.Password);
@@ -54,7 +57,7 @@ namespace Rumassa.API.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDTO login)
         {
             if (!ModelState.IsValid)
@@ -67,7 +70,7 @@ namespace Rumassa.API.Controllers
             {
                 return BadRequest(new TokenDTO()
                 {
-                    Message = "Email Not found",
+                    Message = "Email Not Found!",
                     isSuccess = false,
                     Token = ""
                 });
@@ -78,7 +81,7 @@ namespace Rumassa.API.Controllers
             {
                 return BadRequest(new TokenDTO()
                 {
-                    Message = "Password not match",
+                    Message = "Password do not match!",
                     isSuccess = false,
                     Token = ""
                 });
@@ -95,5 +98,12 @@ namespace Rumassa.API.Controllers
 
         }
 
+        [HttpGet()]
+        public async Task<List<User>> GetAll()
+        {
+            var result = await _userManager.Users.ToListAsync();
+        
+            return result;
+        }
     }
 }

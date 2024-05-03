@@ -11,6 +11,7 @@ import { KakoformitComponent } from './components/pages/kakoformit/kakoformit.co
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path:'dostavka', component:DostavkaComponent},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegistrationComponent},
+    {path:'dashboard', component: DashboardComponent},
     {path:'kakoformit', component:KakoformitComponent},
     {path:'contacts', component:ContactsComponent},
     {path:'cpacibo', component:CpaciboComponent},

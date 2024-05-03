@@ -17,6 +17,6 @@ namespace Rumassa.Application.UseCases.OrderCases.Commands
         public double TotalPrice { get; set; }
         public string PaymentMethod { get; set; }
         public int TotalAmount { get; set; }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
     }
 }

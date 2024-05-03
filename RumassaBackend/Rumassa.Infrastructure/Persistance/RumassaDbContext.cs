@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Rumassa.Application.Abstractions;
 using Rumassa.Domain.Entities;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Infrastructure.Persistance
 {
-    public class RumassaDbContext : IdentityDbContext<User, Role, Guid>, IRumassaDbContext
+    public class RumassaDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>, IRumassaDbContext
     {
         public RumassaDbContext(DbContextOptions<RumassaDbContext> options)
             : base(options)

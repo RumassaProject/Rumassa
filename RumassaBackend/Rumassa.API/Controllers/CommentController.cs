@@ -30,17 +30,20 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Comment>> GetAll(GetAllCommentsQuery request)
+        public async Task<IEnumerable<Comment>> GetAll()
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetAllCommentsQuery());
 
             return result;
         }
 
         [HttpGet("{id}")]
-        public async Task<Comment> GetById(GetCommentByIdQuery request)
+        public async Task<Comment> GetById(Guid id)
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetCommentByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

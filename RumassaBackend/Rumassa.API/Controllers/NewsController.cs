@@ -30,17 +30,20 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<News>> GetAll(GetAllNewsQuery request)
+        public async Task<IEnumerable<News>> GetAll()
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetAllNewsQuery());
 
             return result;
         }
 
         [HttpGet("{id}")]
-        public async Task<News> GetById(GetNewsByIdQuery request)
+        public async Task<News> GetById(Guid id)
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetNewsByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

@@ -19,7 +19,7 @@ namespace Rumassa.Application.UseCases.ProductDetailsCases.Commands
         public string TotalPortion { get; set; }
         public string QuantityPerPortion { get; set; }
         public string PercentPerDay { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid? ProductId { get; set; }
 
     }
 }
