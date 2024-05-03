@@ -57,7 +57,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                 await _context.News.AddAsync(news, cancellationToken);
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new ResponseModel
+                return new ResponseModel()
                 {
                     StatusCode = 201,
                     Message = $"News Created",

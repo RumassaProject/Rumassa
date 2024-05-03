@@ -13,8 +13,8 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240502151415_testt")]
-    partial class testt
+    [Migration("20240503131046_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,6 +214,10 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("ProfilePhotoPath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("text");
 
