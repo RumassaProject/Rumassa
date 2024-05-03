@@ -30,9 +30,9 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Category>> GetAll(GetAllCategoriesQuery request)
+        public async Task<IEnumerable<Category>> GetAll()
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new GetAllCategoriesQuery());
 
             return result;
         }
