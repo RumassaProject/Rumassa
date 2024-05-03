@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { KakoformitComponent } from './components/pages/kakoformit/kakoformit.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -22,6 +23,7 @@ export const routes: Routes = [
     {path:'register', component:RegistrationComponent},
     {path:'kakoformit', component:KakoformitComponent},
     {path:'contacts', component:ContactsComponent},
+    {path:'cpacibo', component:CpaciboComponent},
 
     {path:'**', component:NotFound404Component}
 
