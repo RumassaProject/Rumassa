@@ -11,8 +11,8 @@ namespace Rumassa.Domain.Entities
         public Guid Id { get; set; }
         public string Name { get; set; }
         public List<string> PhotoPaths { get; set; }
-        public Guid OrderId { get; set; }
-        public Guid NewsId { get; set; }
+        public Guid? OrderId { get; set; }
+        public Guid? NewsId { get; set; }
         public virtual Order Order { get; set; }
         public virtual News News { get; set; }
         public virtual ProductDetails ProductDetails { get; set; }

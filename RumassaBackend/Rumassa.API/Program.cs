@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Win32;
 using Rumassa.Application;
 using Rumassa.Domain.Entities.Auth;
 using Rumassa.Infrastructure;
@@ -10,7 +11,7 @@ namespace Rumassa.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,7 @@ namespace Rumassa.API
             builder.Services.AddInfrastructure(builder.Configuration);
 
 
-            builder.Services.AddIdentity<User, Role>()
+            builder.Services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<RumassaDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -61,6 +62,8 @@ namespace Rumassa.API
 
             app.UseHttpsRedirection();
 
+            app.UseCors();
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
@@ -68,6 +71,47 @@ namespace Rumassa.API
             app.UseAuthorization();
 
             app.MapControllers();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var roleManager = 
+                    scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+                var roles = new[] { "Admin", "User" };
+
+                foreach (var role in roles)
+                {
+                    if (!await roleManager.RoleExistsAsync(role))
+                        await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+                }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManager =
+                    scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+                string email = "admin@massa.com";
+                string password = "Admin01!";
+
+                if (await userManager.FindByEmailAsync(email) == null)
+                {
+                    var user = new User()
+                    {
+                        UserName = "Admin",
+                        Name = "Admin",
+                        Surname = "Admin",
+                        Email = email,
+                        Password = password,
+                        PhoneNumber = "+998777777777",
+                        Role = "Admin"
+                    };
+
+                    await userManager.CreateAsync(user, password);
+
+                    await userManager.AddToRoleAsync(user, "Admin");
+                }
+            }
 
             app.Run();
         }
