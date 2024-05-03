@@ -38,9 +38,12 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Comment> GetById()
+        public async Task<Comment> GetById(Guid id)
         {
-            var result = await _mediator.Send(new GetCommentByIdQuery());
+            var result = await _mediator.Send(new GetCommentByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

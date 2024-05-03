@@ -38,9 +38,12 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<Coupon> GetById()
+        public async Task<Coupon> GetById(Guid id)
         {
-            var result = await _mediator.Send(new GetCouponByIdQuery());
+            var result = await _mediator.Send(new GetCouponByIdQuery()
+            {
+                Id = id
+            });
 
             return result;
         }

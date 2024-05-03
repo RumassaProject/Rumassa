@@ -15,7 +15,7 @@ namespace Rumassa.Domain.Entities
         public DateTimeOffset Date { get; set; }
         public string Description { get; set; }
         public Guid? UserId { get; set; }
-        public virtual User User { get; set; }
+        public virtual User? User { get; set; }
         public virtual List<Product> Products  { get; set; }
     }
 }
