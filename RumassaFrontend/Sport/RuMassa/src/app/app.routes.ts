@@ -10,16 +10,18 @@ import { LoginComponent } from './components/login/login.component';
 import { KakoformitComponent } from './components/pages/kakoformit/kakoformit.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
-    {path:'home', component:HomeComponent},
-    {path:'oplata', component:OplataComponent},
-    {path:'obmeni', component:ObmeniComponent},
-    {path:'skidki', component:SkidkiComponent},
-    {path:'dostavka', component:DostavkaComponent},
-    {path:'login', component:LoginComponent},
-    {path:'register', component:RegistrationComponent},
+    {path:'home', component: HomeComponent},
+    {path:'dashboard', component: DashboardComponent},
+    {path:'oplata', component: OplataComponent},
+    {path:'obmeni', component: ObmeniComponent},
+    {path:'skidki', component: SkidkiComponent},
+    {path:'dostavka', component: DostavkaComponent},
+    {path:'login', component: LoginComponent},
+    {path:'register', component: RegistrationComponent},
 
     {path:'kakoformit', component:KakoformitComponent},
     {path:'cpacibo', component:CpaciboComponent},

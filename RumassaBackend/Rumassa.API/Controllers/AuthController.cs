@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rumassa.Application.UseCases.AuthService;
 using Rumassa.Domain.Entities.Auth;
 using Rumassa.Domain.Entities.DTOs;
@@ -97,5 +98,12 @@ namespace Rumassa.API.Controllers
 
         }
 
+        [HttpGet()]
+        public async Task<List<User>> GetAll()
+        {
+            var result = await _userManager.Users.ToListAsync();
+        
+            return result;
+        }
     }
 }
