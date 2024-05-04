@@ -4,6 +4,7 @@ using Rumassa.Application.Abstractions;
 using Rumassa.Application.UseCases.NewsCases.Commands;
 using Rumassa.Domain.Entities;
 using Rumassa.Domain.Entities.DTOs;
+using System.IO;
 
 namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
 {
@@ -23,11 +24,17 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
             if (request != null)
             {
                 var file = request.CardPhoto;
-                string filePath = "";
+                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos");
                 string fileName = "";
 
                 try
                 {
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                        Console.WriteLine("Directory created successfully.");
+                    }
+
                     fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                     filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
