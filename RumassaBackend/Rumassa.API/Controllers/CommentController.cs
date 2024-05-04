@@ -1,16 +1,13 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rumassa.Application.UseCases.CatalogCases.Commands;
-using Rumassa.Application.UseCases.CatalogCases.Queries;
-using Rumassa.Domain.Entities.DTOs;
-using Rumassa.Domain.Entities;
 using Rumassa.Application.UseCases.CommentCases.Commands;
 using Rumassa.Application.UseCases.CommentCases.Queries;
+using Rumassa.Domain.Entities;
+using Rumassa.Domain.Entities.DTOs;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CommentController : ControllerBase
     {
@@ -37,7 +34,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<Comment> GetById(Guid id)
         {
             var result = await _mediator.Send(new GetCommentByIdQuery()
@@ -48,7 +45,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ResponseModel> Update(UpdateCommentCommand request)
         {
             var result = await _mediator.Send(request);
@@ -56,7 +53,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ResponseModel> Delete(DeleteCommentCommand request)
         {
             var result = await _mediator.Send(request);
