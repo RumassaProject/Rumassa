@@ -14,6 +14,8 @@ import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ConsultationComponent } from './components/pages/consultation/consultation.component';
 import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
+import { InfoComponent } from './components/pages/info/info.component';
+import { KartochkaComponent } from './components/pages/kartochka/kartochka.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -30,6 +32,8 @@ export const routes: Routes = [
     {path:'cpacibo', component:CpaciboComponent},
     {path:'consultation', component:ConsultationComponent},
     {path:'vkladki', component:VkladkiComponent},
+    {path:'info', component:InfoComponent},
+    {path:'kartochka', component:KartochkaComponent},
 
     {path:'**', component:NotFound404Component}
 
