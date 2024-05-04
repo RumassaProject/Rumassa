@@ -12,6 +12,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ConsultationComponent } from './components/pages/consultation/consultation.component';
+import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
 import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
 
 export const routes: Routes = [
@@ -35,6 +37,8 @@ export const routes: Routes = [
     {path:'kakoformit', component:KakoformitComponent},
     {path:'contacts', component:ContactsComponent},
     {path:'cpacibo', component:CpaciboComponent},
+    {path:'consultation', component:ConsultationComponent},
+    {path:'vkladki', component:VkladkiComponent},
 
     {path:'**', component:NotFound404Component}
 

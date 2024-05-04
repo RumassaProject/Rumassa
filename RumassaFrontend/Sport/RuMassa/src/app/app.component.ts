@@ -10,6 +10,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 @Component({
   selector: 'app-root',
   standalone: true,
+
   imports: [RouterOutlet, NavbarComponent, FooterComponent, ObmeniComponent, RegistrationComponent, DashboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
