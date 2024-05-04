@@ -39,13 +39,7 @@ export const routes: Routes = [
     {path:'vkladki', component:VkladkiComponent,canActivate: [authGuard, expireGuard]},
     {path:'info', component:InfoComponent,canActivate: [authGuard, expireGuard]},
     {path:'kartochka', component:KartochkaComponent,canActivate: [authGuard, expireGuard]},
-    {path:'adresdostavki', component: AdresdostavkiComponent, canActivate: [authGuard, expireGuard]},
-    {path:'kakoformit', component:KakoformitComponent, canActivate: [authGuard, expireGuard]},
-    {path:'contacts', component:ContactsComponent, canActivate: [authGuard, expireGuard]},
-    {path:'cpacibo', component:CpaciboComponent, canActivate: [authGuard, expireGuard]},
-    {path:'consultation', component:ConsultationComponent, canActivate: [authGuard, expireGuard]},
-    {path:'vkladki', component:VkladkiComponent, canActivate: [authGuard, expireGuard]},
-    {path:'userprofile', component:UserprofileComponent},
+    {path:'userprofile', component:UserprofileComponent, canActivate: [authGuard, expireGuard]},
     {path:'**', component:NotFound404Component}
 
 ];
