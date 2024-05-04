@@ -12,7 +12,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Commands
     {
         public string Name { get; set; }
         public Guid? ProductId { get; set; }
-        public Guid? CatalogId { get; set; }
 
     }
 }

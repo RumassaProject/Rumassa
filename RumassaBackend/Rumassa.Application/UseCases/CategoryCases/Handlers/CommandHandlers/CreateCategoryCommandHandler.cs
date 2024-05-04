@@ -29,7 +29,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
                 {
                     Name = request.Name,
                     ProductId = request.ProductId,
-                    CatalogId = request.CatalogId
                 };
 
                 await _context.Categories.AddAsync(category, cancellationToken);

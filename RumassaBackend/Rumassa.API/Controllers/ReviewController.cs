@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rumassa.Application.UseCases.CatalogCases.Commands;
-using Rumassa.Application.UseCases.CatalogCases.Queries;
 using Rumassa.Domain.Entities.DTOs;
 using Rumassa.Domain.Entities;
 using Rumassa.Application.UseCases.ReviewCases.Commands;
@@ -10,7 +8,7 @@ using Rumassa.Application.UseCases.ReviewCases.Queries;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReviewController : ControllerBase
     {
@@ -37,7 +35,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<Review> GetById(Guid id)
         {
             var result = await _mediator.Send(new GetReviewByIdQuery()
@@ -48,7 +46,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ResponseModel> Update(UpdateReviewCommand request)
         {
             var result = await _mediator.Send(request);
@@ -56,7 +54,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ResponseModel> Delete(DeleteReviewCommand request)
         {
             var result = await _mediator.Send(request);

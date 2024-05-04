@@ -13,7 +13,7 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240503182358_rumassa")]
+    [Migration("20240504033129_rumassa")]
     partial class rumassa
     {
         /// <inheritdoc />
@@ -243,28 +243,10 @@ namespace Rumassa.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Rumassa.Domain.Entities.Catalog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Catalogs");
-                });
-
             modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("CatalogId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
@@ -275,8 +257,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CatalogId");
 
                     b.HasIndex("ProductId");
 
@@ -607,15 +587,9 @@ namespace Rumassa.Infrastructure.Migrations
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
                 {
-                    b.HasOne("Rumassa.Domain.Entities.Catalog", "Catalog")
-                        .WithMany("Categories")
-                        .HasForeignKey("CatalogId");
-
                     b.HasOne("Rumassa.Domain.Entities.Product", "Product")
                         .WithMany("Categories")
                         .HasForeignKey("ProductId");
-
-                    b.Navigation("Catalog");
 
                     b.Navigation("Product");
                 });
@@ -687,11 +661,6 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Navigation("News");
 
                     b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("Rumassa.Domain.Entities.Catalog", b =>
-                {
-                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.News", b =>

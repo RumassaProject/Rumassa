@@ -10,7 +10,6 @@ namespace Rumassa.Application.Abstractions
 {
     public interface IRumassaDbContext
     {
-        public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
