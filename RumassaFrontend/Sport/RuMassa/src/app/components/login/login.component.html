@@ -8,15 +8,15 @@
         <p>Нет аккаунта?</p>
         <a routerLink="/register">Зарегистрируйтесь</a>
     </div>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="login()">
         <div class="register-form">
             <label class="input-label" for="email">
                 Email
-                <input id="email" placeholder="Введите e-mail" type="email">
+                <input id="email" placeholder="Введите e-mail" formControlName="email" type="email">
             </label>
             <label class="input-label" for="email">
                 Пароль
-                <input id="email" placeholder="Введите ваш пароль" type="password">
+                <input id="password" placeholder="Введите ваш пароль" formControlName="password" type="password">
             </label>
         </div>
         
