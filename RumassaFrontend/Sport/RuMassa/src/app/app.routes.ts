@@ -16,6 +16,7 @@ import { ConsultationComponent } from './components/pages/consultation/consultat
 import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
 import { InfoComponent } from './components/pages/info/info.component';
 import { KartochkaComponent } from './components/pages/kartochka/kartochka.component';
+import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -27,6 +28,14 @@ export const routes: Routes = [
     {path:'login', component:LoginComponent},
     {path:'register', component:RegistrationComponent},
     {path:'dashboard', component: DashboardComponent},
+    {path:'oplata', component: OplataComponent},
+    {path:'obmeni', component: ObmeniComponent},
+    {path:'skidki', component: SkidkiComponent},
+    {path:'dostavka', component: DostavkaComponent},
+    {path:'login', component: LoginComponent},
+    {path:'register', component: RegistrationComponent},
+    {path:'adresdostavki', component: AdresdostavkiComponent},
+
     {path:'kakoformit', component:KakoformitComponent},
     {path:'contacts', component:ContactsComponent},
     {path:'cpacibo', component:CpaciboComponent},

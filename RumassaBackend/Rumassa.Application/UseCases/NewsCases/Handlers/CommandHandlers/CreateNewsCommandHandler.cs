@@ -1,22 +1,22 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Rumassa.Application.Abstractions;
 using Rumassa.Application.UseCases.NewsCases.Commands;
 using Rumassa.Domain.Entities;
 using Rumassa.Domain.Entities.DTOs;
+using System.IO;
 
 namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
 {
     public class CreateNewsCommandHandler : IRequestHandler<CreateNewsCommand, ResponseModel>
     {
         private readonly IRumassaDbContext _context;
-        private readonly IHostEnvironment _hostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CreateNewsCommandHandler(IRumassaDbContext context, IHostEnvironment hostEnvironment)
+        public CreateNewsCommandHandler(IRumassaDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<ResponseModel> Handle(CreateNewsCommand request, CancellationToken cancellationToken)
@@ -24,13 +24,19 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
             if (request != null)
             {
                 var file = request.CardPhoto;
-                string filePath = "";
+                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos");
                 string fileName = "";
 
                 try
                 {
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                        Console.WriteLine("Directory created successfully.");
+                    }
+
                     fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    filePath = Path.Combine(_hostEnvironment.ContentRootPath, "ProductPhotos", fileName);
+                    filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
