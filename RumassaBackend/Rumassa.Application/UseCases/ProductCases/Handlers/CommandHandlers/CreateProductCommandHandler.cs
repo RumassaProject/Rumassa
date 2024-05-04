@@ -25,12 +25,18 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
             if (request != null)
             {
                 var photosFile = request.Photos;
-                string photoPath = "";
+                string photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, request.Name);
                 string photoName = "";
                 List<string> photosPaths = new List<string>();
 
                 try
                 {
+                    if (!Directory.Exists(photoPath))
+                    {
+                        Directory.CreateDirectory(photoPath);
+                        Console.WriteLine("Directory created successfully.");
+                    }
+
                     foreach (var photoFile in photosFile)
                     {
                         photoName = Guid.NewGuid().ToString() + Path.GetExtension(photoFile.FileName);

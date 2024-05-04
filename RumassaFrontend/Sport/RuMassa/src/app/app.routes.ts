@@ -14,6 +14,7 @@ import { CpaciboComponent } from './components/pages/cpacibo/cpacibo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ConsultationComponent } from './components/pages/consultation/consultation.component';
 import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
+import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -25,6 +26,14 @@ export const routes: Routes = [
     {path:'login', component:LoginComponent},
     {path:'register', component:RegistrationComponent},
     {path:'dashboard', component: DashboardComponent},
+    {path:'oplata', component: OplataComponent},
+    {path:'obmeni', component: ObmeniComponent},
+    {path:'skidki', component: SkidkiComponent},
+    {path:'dostavka', component: DostavkaComponent},
+    {path:'login', component: LoginComponent},
+    {path:'register', component: RegistrationComponent},
+    {path:'adresdostavki', component: AdresdostavkiComponent},
+
     {path:'kakoformit', component:KakoformitComponent},
     {path:'contacts', component:ContactsComponent},
     {path:'cpacibo', component:CpaciboComponent},
