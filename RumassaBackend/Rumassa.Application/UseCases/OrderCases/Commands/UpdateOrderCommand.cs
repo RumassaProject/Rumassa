@@ -11,7 +11,7 @@ namespace Rumassa.Application.UseCases.OrderCases.Commands
     public class UpdateOrderCommand : IRequest<ResponseModel>
     {
         public Guid Id { get; set; }
-        public DateTimeOffset Date { get; set; }
+        public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
         public double OrderPrice { get; set; }
         public double DeliveryPrice { get; set; }
         public double TotalPrice { get; set; }
