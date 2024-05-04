@@ -1,30 +1,21 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using Rumassa.Application.Abstractions;
-using Rumassa.Application.UseCases.CatalogCases.Commands;
 using Rumassa.Application.UseCases.NewsCases.Commands;
-using Rumassa.Domain.Entities.Auth;
 using Rumassa.Domain.Entities.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
 {
     public class UpdateNewsCommandHandler : IRequestHandler<UpdateNewsCommand, ResponseModel>
     {
         private readonly IRumassaDbContext _context;
-        private readonly IHostEnvironment _hostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public UpdateNewsCommandHandler(IRumassaDbContext context, IHostEnvironment hostEnvironment)
+        public UpdateNewsCommandHandler(IRumassaDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<ResponseModel> Handle(UpdateNewsCommand request, CancellationToken cancellationToken)
@@ -48,7 +39,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                     try
                     {
                         fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                        filePath = Path.Combine(_hostEnvironment.ContentRootPath, "ProductPhotos", fileName);
+                        filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
