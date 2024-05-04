@@ -15,7 +15,7 @@ export class AuthService {
 
   apiUrl = environment.apiUrl;
   constructor(private http : HttpClient,private router : Router) { }
-  tokenKey = "accessToken"
+  tokenKey = "token"
 
   
   register(data:Register) : Observable<Response>{
