@@ -17,21 +17,16 @@ import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
 import { InfoComponent } from './components/pages/info/info.component';
 import { KartochkaComponent } from './components/pages/kartochka/kartochka.component';
 import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
+import { authGuard, expireGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
-    {path:'home', component:HomeComponent},
-    {path:'oplata', component:OplataComponent},
-    {path:'obmeni', component:ObmeniComponent},
-    {path:'skidki', component:SkidkiComponent},
-    {path:'dostavka', component:DostavkaComponent},
-    {path:'login', component:LoginComponent},
-    {path:'register', component:RegistrationComponent},
-    {path:'dashboard', component: DashboardComponent},
-    {path:'oplata', component: OplataComponent},
-    {path:'obmeni', component: ObmeniComponent},
-    {path:'skidki', component: SkidkiComponent},
-    {path:'dostavka', component: DostavkaComponent},
+    {path:'home', component:HomeComponent, canActivate: [authGuard, expireGuard]},
+    {path:'oplata', component:OplataComponent, canActivate: [authGuard, expireGuard]},
+    {path:'obmeni', component:ObmeniComponent, canActivate: [authGuard, expireGuard]},
+    {path:'skidki', component:SkidkiComponent, canActivate: [authGuard, expireGuard]},
+    {path:'dostavka', component:DostavkaComponent, canActivate: [authGuard, expireGuard]},
+    {path:'dashboard', component: DashboardComponent, canActivate: [authGuard, expireGuard]},
     {path:'login', component: LoginComponent},
     {path:'register', component: RegistrationComponent},
     {path:'adresdostavki', component: AdresdostavkiComponent},
@@ -42,7 +37,12 @@ export const routes: Routes = [
     {path:'vkladki', component:VkladkiComponent},
     {path:'info', component:InfoComponent},
     {path:'kartochka', component:KartochkaComponent},
-
+    {path:'adresdostavki', component: AdresdostavkiComponent, canActivate: [authGuard, expireGuard]},
+    {path:'kakoformit', component:KakoformitComponent, canActivate: [authGuard, expireGuard]},
+    {path:'contacts', component:ContactsComponent, canActivate: [authGuard, expireGuard]},
+    {path:'cpacibo', component:CpaciboComponent, canActivate: [authGuard, expireGuard]},
+    {path:'consultation', component:ConsultationComponent, canActivate: [authGuard, expireGuard]},
+    {path:'vkladki', component:VkladkiComponent, canActivate: [authGuard, expireGuard]},
     {path:'**', component:NotFound404Component}
 
 ];

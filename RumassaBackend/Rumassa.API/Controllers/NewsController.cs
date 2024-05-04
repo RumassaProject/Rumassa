@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rumassa.Application.UseCases.CatalogCases.Commands;
-using Rumassa.Application.UseCases.CatalogCases.Queries;
 using Rumassa.Domain.Entities.DTOs;
 using Rumassa.Domain.Entities;
 using Rumassa.Application.UseCases.NewsCases.Commands;
@@ -10,7 +8,7 @@ using Rumassa.Application.UseCases.NewsCases.Queries;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class NewsController : ControllerBase
     {
@@ -30,14 +28,18 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<News>> GetAll()
+        public async Task<IEnumerable<News>> GetAll(int pageIndex, int size)
         {
-            var result = await _mediator.Send(new GetAllNewsQuery());
+            var result = await _mediator.Send(new GetAllNewsQuery()
+            {
+                PageIndex = pageIndex,
+                Size = size
+            });
 
             return result;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<News> GetById(Guid id)
         {
             var result = await _mediator.Send(new GetNewsByIdQuery()
@@ -48,7 +50,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ResponseModel> Update(UpdateNewsCommand request)
         {
             var result = await _mediator.Send(request);
@@ -56,7 +58,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ResponseModel> Delete(DeleteNewsCommand request)
         {
             var result = await _mediator.Send(request);

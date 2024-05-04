@@ -29,7 +29,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
             {
                 category.Name = request.Name;
                 category.ProductId = request.ProductId;
-                category.CatalogId = request.CatalogId;
 
                 _context.Categories.Update(category);
 
