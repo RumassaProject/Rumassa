@@ -15,6 +15,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ConsultationComponent } from './components/pages/consultation/consultation.component';
 import { VkladkiComponent } from './components/pages/vkladki/vkladki.component';
 import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
+import { KorzinaComponent } from './components/pages/korzina/korzina.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -33,7 +34,7 @@ export const routes: Routes = [
     {path:'cpacibo', component:CpaciboComponent},
     {path:'consultation', component:ConsultationComponent},
     {path:'vkladki', component:VkladkiComponent},
-
+    {path: 'korzina', component:KorzinaComponent},
     {path:'**', component:NotFound404Component}
 
 ];
