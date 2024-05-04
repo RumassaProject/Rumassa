@@ -8,7 +8,7 @@
         <p>Уже есть аккаунт?</p>
         <a routerLink="/login">Войдите</a>
     </div>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="register()">
         <div class="register-form">
             <label class="input-label" for="email">
                 Ваша почта
