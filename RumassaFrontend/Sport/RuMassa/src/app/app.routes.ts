@@ -29,7 +29,7 @@ export const routes: Routes = [
     {path:'dashboard', component: DashboardComponent, canActivate: [authGuard, expireGuard]},
     {path:'login', component: LoginComponent},
     {path:'register', component: RegistrationComponent},
-    {path:'adresdostavki', component: AdresdostavkiComponent,canActivate: [authGuard, expireGuard]},
+    {path:'adresdostavki', component: AdresdostavkiComponent},
     {path:'kakoformit', component:KakoformitComponent,canActivate: [authGuard, expireGuard]},
     {path:'contacts', component:ContactsComponent,canActivate: [authGuard, expireGuard]},
     {path:'cpacibo', component:CpaciboComponent,canActivate: [authGuard, expireGuard]},
