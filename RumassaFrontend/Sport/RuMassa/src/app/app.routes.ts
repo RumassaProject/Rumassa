@@ -18,10 +18,11 @@ import { InfoComponent } from './components/pages/info/info.component';
 import { KartochkaComponent } from './components/pages/kartochka/kartochka.component';
 import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdostavki.component';
 import { authGuard, expireGuard } from './guard/auth.guard';
+import { UserprofileComponent } from './components/pages/userprofile/userprofile.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
-    {path:'home', component:HomeComponent, canActivate: [authGuard, expireGuard]},
+    {path:'home', component:HomeComponent},
     {path:'oplata', component:OplataComponent, canActivate: [authGuard, expireGuard]},
     {path:'obmeni', component:ObmeniComponent, canActivate: [authGuard, expireGuard]},
     {path:'skidki', component:SkidkiComponent, canActivate: [authGuard, expireGuard]},
@@ -43,6 +44,7 @@ export const routes: Routes = [
     {path:'cpacibo', component:CpaciboComponent, canActivate: [authGuard, expireGuard]},
     {path:'consultation', component:ConsultationComponent, canActivate: [authGuard, expireGuard]},
     {path:'vkladki', component:VkladkiComponent, canActivate: [authGuard, expireGuard]},
+    {path:'userprofile', component:UserprofileComponent},
     {path:'**', component:NotFound404Component}
 
 ];
