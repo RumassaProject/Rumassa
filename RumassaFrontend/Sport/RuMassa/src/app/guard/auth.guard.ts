@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
-var token = 'accessToken';
+var token = 'token';
 
 export const authGuard: CanActivateFn = (route, state) => {
   if(localStorage.getItem(token) == null || localStorage.getItem(token) == "" || localStorage.getItem(token) == undefined)
