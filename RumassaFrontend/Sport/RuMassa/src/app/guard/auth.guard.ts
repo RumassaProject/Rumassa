@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 var token = 'token';
 
@@ -29,6 +30,3 @@ export const expireGuard: CanActivateFn = (route, state) => {
   return true
 }
 
-function jwtDecode(localToken: string): any {
-  throw new Error('Function not implemented.');
-}
