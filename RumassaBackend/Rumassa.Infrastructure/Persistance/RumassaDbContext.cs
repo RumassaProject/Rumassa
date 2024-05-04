@@ -20,7 +20,6 @@ namespace Rumassa.Infrastructure.Persistance
             Database.Migrate();
         }
 
-        public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Coupon> Coupons { get; set; }

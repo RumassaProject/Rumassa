@@ -37,7 +37,23 @@ namespace Rumassa.API
                 .AddEntityFrameworkStores<RumassaDbContext>()
                 .AddDefaultTokenProviders();
 
-            builder.Services.AddControllers();
+            builder.Services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = builder.Configuration["Auth:Google:ClientId"]!;
+                    options.ClientSecret = builder.Configuration["Auth:Google:ClientSecret"]!;
+                })
+                .AddFacebook(options =>
+                {
+                    options.AppId = builder.Configuration["Auth:Facebook:AppId"]!;
+                    options.AppSecret = builder.Configuration["Auth:Facebook:AppSecret"]!;
+                });
+
+            builder.Services.AddControllers().
+                AddJsonOptions(options=>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

@@ -58,18 +58,6 @@ namespace Rumassa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Catalogs",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Catalogs", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Coupons",
                 columns: table => new
                 {
@@ -305,17 +293,11 @@ namespace Rumassa.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: true),
-                    CatalogId = table.Column<Guid>(type: "uuid", nullable: true)
+                    ProductId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Categories_Catalogs_CatalogId",
-                        column: x => x.CatalogId,
-                        principalTable: "Catalogs",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Categories_Products_ProductId",
                         column: x => x.ProductId,
@@ -406,11 +388,6 @@ namespace Rumassa.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_CatalogId",
-                table: "Categories",
-                column: "CatalogId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Categories_ProductId",
                 table: "Categories",
                 column: "ProductId");
@@ -490,9 +467,6 @@ namespace Rumassa.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Catalogs");
 
             migrationBuilder.DropTable(
                 name: "Products");

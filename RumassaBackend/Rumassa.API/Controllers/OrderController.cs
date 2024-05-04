@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rumassa.Application.UseCases.CatalogCases.Commands;
-using Rumassa.Application.UseCases.CatalogCases.Queries;
 using Rumassa.Domain.Entities.DTOs;
 using Rumassa.Domain.Entities;
 using Rumassa.Application.UseCases.OrderCases.Commands;
@@ -10,7 +8,7 @@ using Rumassa.Application.UseCases.OrderCases.Queries;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -37,7 +35,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<Order> GetById(Guid id)
         {
             var result = await _mediator.Send(new GetOrderByIdQuery()
@@ -48,7 +46,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ResponseModel> Update(UpdateOrderCommand request)
         {
             var result = await _mediator.Send(request);
@@ -56,7 +54,7 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<ResponseModel> Delete(DeleteOrderCommand request)
         {
             var result = await _mediator.Send(request);
