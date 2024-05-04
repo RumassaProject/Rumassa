@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rumassa.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace Rumassa.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost("Register")]
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterDTO register)
         {
             if (!ModelState.IsValid)
@@ -65,7 +65,7 @@ namespace Rumassa.API.Controllers
 
         }
 
-        [HttpPost("Login")]
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDTO login)
         {
             if (!ModelState.IsValid)
@@ -115,8 +115,7 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public IActionResult ExternalLogin(string provider, string returnUrl)
+        public IActionResult ExternalLogin(string provider, string returnUrl,LoginDTO login)
         {
             var redirectUrl = Url.Action("ExternalLoginCallback", "Auth", new { ReturnUrl = returnUrl });
 
@@ -126,7 +125,6 @@ namespace Rumassa.API.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string? returnUrl, string remoteError)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
