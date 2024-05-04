@@ -22,13 +22,14 @@ export class RegistrationComponent {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      confirmPassword: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       phoneNumber: ['', Validators.required],
     });
   }
 
   register() {
-    if (this.form.invalid) {
+    if (this.form.invalid || !this.passwordsMatch()) {
       return;
     }
 
@@ -42,5 +43,11 @@ export class RegistrationComponent {
         alert(err.error.message)
       }
     });
+  }
+
+  passwordsMatch(): boolean {
+    const password = this.form.get('password')?.value;
+    const confirmPassword = this.form.get('confirmPassword')?.value;
+    return password === confirmPassword;
   }
 }
