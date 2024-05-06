@@ -39,7 +39,7 @@ export class LoginComponent {
             this.router.navigate(['/home']); // Navigate to the home page
             setTimeout(() => {
               window.location.reload(); // Reload the page after a short delay
-            }, 50); // Adjust the delay as needed
+            }, 100); // Adjust the delay as needed
           });
 
           }, error: (err) => {
