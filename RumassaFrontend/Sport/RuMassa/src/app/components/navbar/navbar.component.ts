@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { ImageModule } from 'primeng/image';
 import { ToolbarModule } from 'primeng/toolbar';
 import { NavbarServiceService } from './navbar-service.service';
@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [ImageModule, ToolbarModule, RouterModule],
+  imports: [ImageModule, ToolbarModule, RouterModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -43,10 +43,10 @@ export class NavbarComponent implements OnInit {
   {
     this.authService.logOut();
     this.router.navigateByUrl('/login', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/login']); // Navigate to the login page
+      this.router.navigate(['/login']);
       setTimeout(() => {
-        window.location.reload(); // Refresh the page after a short delay
-      }, 50); // Adjust the delay as needed
+        window.location.reload();
+      }, 1);
     });
   }
 

@@ -11,7 +11,7 @@ namespace Rumassa.API
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -94,8 +94,8 @@ namespace Rumassa.API
 
                 foreach (var role in roles)
                 {
-                    if (!await roleManager.RoleExistsAsync(role))
-                        await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+                    if (!roleManager.RoleExistsAsync(role).Result)
+                        roleManager.CreateAsync(new IdentityRole<Guid>(role)).Wait();
                 }
             }
 
@@ -107,7 +107,7 @@ namespace Rumassa.API
                 string email = "admin@massa.com";
                 string password = "Admin01!";
 
-                if (await userManager.FindByEmailAsync(email) == null)
+                if (userManager.FindByEmailAsync(email).Result == null)
                 {
                     var user = new User()
                     {
@@ -120,9 +120,9 @@ namespace Rumassa.API
                         Role = "Admin"
                     };
 
-                    await userManager.CreateAsync(user, password);
+                    userManager.CreateAsync(user, password).Wait();
 
-                    await userManager.AddToRoleAsync(user, "Admin");
+                    userManager.AddToRoleAsync(user, "Admin").Wait();
                 }
             }
 
