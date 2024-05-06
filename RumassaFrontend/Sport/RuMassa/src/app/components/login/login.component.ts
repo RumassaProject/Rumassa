@@ -38,9 +38,12 @@ export class LoginComponent {
 
           }}, error: (err) => {
             alert(err.error.message)
+
           }
+          
         });       
       }
+      
       ngOnInit(): void {
         console.log("salom")
         this.form = this.fb.group({

@@ -20,6 +20,7 @@ import { AdresdostavkiComponent } from './components/pages/adresdostavki/adresdo
 import { authGuard, expireGuard } from './guard/auth.guard';
 import { UserprofileComponent } from './components/pages/userprofile/userprofile.component';
 import { KorzinaComponent } from './components/pages/korzina/korzina.component';
+import { NovostiComponent } from './components/pages/novosti/novosti.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
@@ -40,6 +41,7 @@ export const routes: Routes = [
     {path:'info', component:InfoComponent,canActivate: [authGuard, expireGuard]},
     {path:'kartochka', component:KartochkaComponent,canActivate: [authGuard, expireGuard]},
     {path:'userprofile', component:UserprofileComponent, canActivate: [authGuard, expireGuard]},
+    {path:'novosti', component:NovostiComponent, canActivate: [authGuard, expireGuard]},
     {path:'**', component:NotFound404Component}
 
 ];
