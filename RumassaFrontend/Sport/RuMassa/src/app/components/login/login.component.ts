@@ -30,9 +30,12 @@ export class LoginComponent {
           this.decodedToken = jwtDecode(localStorage.getItem(this.tokenKey)!)
           if(this.decodedToken.role == 'Admin'){
             console.log(this.decodedToken.role);
+            console.log(12)
           }
           else if(this.decodedToken.role == 'User'){
             console.log(this.decodedToken.role);
+            console.log(12)
+
           }}, error: (err) => {
             alert(err.error.message)
           }

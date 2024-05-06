@@ -115,6 +115,19 @@ namespace Rumassa.API.Controllers
         }
 
 
+
+        [HttpGet]
+        public async Task<User> GetById(Guid id)
+        {
+            var result = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (result == null)
+                throw new Exception();
+
+            return result;
+        }
+
+
         [HttpPost]
         public IActionResult ExternalLogin(string provider, string returnUrl)
         {
