@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-registration',
@@ -11,6 +12,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
+  
+  apiUrl = environment.apiUrl;
+
   constructor(private router : Router,private fb: FormBuilder, private authService : AuthService){}
 
   form!: FormGroup;
@@ -55,5 +59,13 @@ export class RegistrationComponent {
     const password = this.form.get('password')?.value;
     const confirmPassword = this.form.get('confirmPassword')?.value;
     return password === confirmPassword;
+  }
+
+  googleLogin(): void {
+    window.location.href = `${this.apiUrl}Auth/ExternalLogin`;
+  }
+
+  facebookLogin(): void {
+    window.location.href = `${this.apiUrl}Auth/ExternalLoginCallback`;
   }
 }

@@ -114,8 +114,9 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
+
         [HttpPost]
-        public IActionResult ExternalLogin(string provider, string returnUrl,LoginDTO login)
+        public IActionResult ExternalLogin(string provider, string returnUrl)
         {
             var redirectUrl = Url.Action("ExternalLoginCallback", "Auth", new { ReturnUrl = returnUrl });
 

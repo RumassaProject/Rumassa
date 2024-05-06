@@ -13,7 +13,7 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240506100052_test")]
+    [Migration("20240506135405_test")]
     partial class test
     {
         /// <inheritdoc />
@@ -458,10 +458,7 @@ namespace Rumassa.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<short?>("CategoryId1")
+                    b.Property<short?>("CategoryId")
                         .HasColumnType("smallint");
 
                     b.Property<string>("Name")
@@ -481,13 +478,18 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("NewsId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -602,7 +604,7 @@ namespace Rumassa.Infrastructure.Migrations
                 {
                     b.HasOne("Rumassa.Domain.Entities.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId1");
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("Rumassa.Domain.Entities.News", "News")
                         .WithMany("Products")
@@ -612,11 +614,17 @@ namespace Rumassa.Infrastructure.Migrations
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
 
+                    b.HasOne("Rumassa.Domain.Entities.Auth.User", "User")
+                        .WithMany("Wishlist")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Category");
 
                     b.Navigation("News");
 
                     b.Navigation("Order");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Review", b =>
@@ -635,6 +643,8 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Navigation("News");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("Wishlist");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
