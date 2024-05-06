@@ -23,7 +23,7 @@ import { KorzinaComponent } from './components/pages/korzina/korzina.component';
 
 export const routes: Routes = [
     {path:'', redirectTo: '/home', pathMatch: 'full'},
-    {path:'home', component:HomeComponent},
+    {path:'home', component:HomeComponent,canActivate: [authGuard, expireGuard]},
     {path:'oplata', component:OplataComponent, canActivate: [authGuard, expireGuard]},
     {path:'obmeni', component:ObmeniComponent, canActivate: [authGuard, expireGuard]},
     {path:'skidki', component:SkidkiComponent, canActivate: [authGuard, expireGuard]},
@@ -31,7 +31,7 @@ export const routes: Routes = [
     {path:'dashboard', component: DashboardComponent, canActivate: [authGuard, expireGuard]},
     {path:'login', component: LoginComponent},
     {path:'register', component: RegistrationComponent},
-    {path:'adresdostavki', component: AdresdostavkiComponent},
+    {path:'adresdostavki', component: AdresdostavkiComponent,canActivate: [authGuard, expireGuard]},
     {path:'kakoformit', component:KakoformitComponent,canActivate: [authGuard, expireGuard]},
     {path:'contacts', component:ContactsComponent,canActivate: [authGuard, expireGuard]},
     {path:'cpacibo', component:CpaciboComponent,canActivate: [authGuard, expireGuard]},
