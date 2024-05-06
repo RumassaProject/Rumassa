@@ -10,7 +10,7 @@ namespace Rumassa.Application.UseCases.CategoryCases.Commands
 {
     public class DeleteCategoryCommand : IRequest<ResponseModel>
     {
-        public Guid Id { get; set; }
+        public short Id { get; set; }
 
     }
 }

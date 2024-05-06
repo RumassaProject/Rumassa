@@ -5,10 +5,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Rumassa.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class rumassa : Migration
+    public partial class test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -55,6 +57,19 @@ namespace Rumassa.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<short>(type: "smallint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -268,13 +283,21 @@ namespace Rumassa.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<double>(type: "double precision", nullable: false),
                     PhotoPaths = table.Column<List<string>>(type: "text[]", nullable: false),
                     OrderId = table.Column<Guid>(type: "uuid", nullable: true),
-                    NewsId = table.Column<Guid>(type: "uuid", nullable: true)
+                    NewsId = table.Column<Guid>(type: "uuid", nullable: true),
+                    CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CategoryId1 = table.Column<short>(type: "smallint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryId1",
+                        column: x => x.CategoryId1,
+                        principalTable: "Categories",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Products_News_NewsId",
                         column: x => x.NewsId,
@@ -284,49 +307,6 @@ namespace Rumassa.Infrastructure.Migrations
                         name: "FK_Products_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Categories_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductDetails",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Description = table.Column<List<string>>(type: "text[]", nullable: false),
-                    ProductIs = table.Column<string>(type: "text", nullable: false),
-                    Vitamins = table.Column<string>(type: "text", nullable: false),
-                    Recommendation = table.Column<string>(type: "text", nullable: false),
-                    OnePortion = table.Column<string>(type: "text", nullable: false),
-                    TotalPortion = table.Column<string>(type: "text", nullable: false),
-                    QuantityPerPortion = table.Column<string>(type: "text", nullable: false),
-                    PercentPerDay = table.Column<string>(type: "text", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductDetails_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
                         principalColumn: "Id");
                 });
 
@@ -348,6 +328,18 @@ namespace Rumassa.Infrastructure.Migrations
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { (short)1, "Оральные препараты" },
+                    { (short)2, "Инъекционные препараты" },
+                    { (short)3, "Препараты ПКТ" },
+                    { (short)4, "Гормон роста" },
+                    { (short)5, "Сармы/Sarms" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -388,11 +380,6 @@ namespace Rumassa.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_ProductId",
-                table: "Categories",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
                 table: "Comments",
                 column: "UserId");
@@ -408,10 +395,9 @@ namespace Rumassa.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductDetails_ProductId",
-                table: "ProductDetails",
-                column: "ProductId",
-                unique: true);
+                name: "IX_Products_CategoryId1",
+                table: "Products",
+                column: "CategoryId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_NewsId",
@@ -448,9 +434,6 @@ namespace Rumassa.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
                 name: "Comments");
 
             migrationBuilder.DropTable(
@@ -460,9 +443,6 @@ namespace Rumassa.Infrastructure.Migrations
                 name: "Deliveries");
 
             migrationBuilder.DropTable(
-                name: "ProductDetails");
-
-            migrationBuilder.DropTable(
                 name: "Reviews");
 
             migrationBuilder.DropTable(
@@ -470,6 +450,9 @@ namespace Rumassa.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "News");

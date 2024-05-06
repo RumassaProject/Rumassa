@@ -242,22 +242,46 @@ namespace Rumassa.Infrastructure.Migrations
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("smallint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = (short)1,
+                            Name = "Оральные препараты"
+                        },
+                        new
+                        {
+                            Id = (short)2,
+                            Name = "Инъекционные препараты"
+                        },
+                        new
+                        {
+                            Id = (short)3,
+                            Name = "Препараты ПКТ"
+                        },
+                        new
+                        {
+                            Id = (short)4,
+                            Name = "Гормон роста"
+                        },
+                        new
+                        {
+                            Id = (short)5,
+                            Name = "Сармы/Sarms"
+                        });
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Comment", b =>
@@ -431,6 +455,12 @@ namespace Rumassa.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid");
+
+                    b.Property<short?>("CategoryId1")
+                        .HasColumnType("smallint");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -445,62 +475,18 @@ namespace Rumassa.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text[]");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId1");
 
                     b.HasIndex("NewsId");
 
                     b.HasIndex("OrderId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Rumassa.Domain.Entities.ProductDetails", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<List<string>>("Description")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
-                    b.Property<string>("OnePortion")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PercentPerDay")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("ProductIs")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("QuantityPerPortion")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Recommendation")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("TotalPortion")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Vitamins")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
-
-                    b.ToTable("ProductDetails");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Review", b =>
@@ -582,15 +568,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
-                {
-                    b.HasOne("Rumassa.Domain.Entities.Product", "Product")
-                        .WithMany("Categories")
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Rumassa.Domain.Entities.Comment", b =>
                 {
                     b.HasOne("Rumassa.Domain.Entities.Auth.User", "User")
@@ -620,6 +597,10 @@ namespace Rumassa.Infrastructure.Migrations
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Product", b =>
                 {
+                    b.HasOne("Rumassa.Domain.Entities.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId1");
+
                     b.HasOne("Rumassa.Domain.Entities.News", "News")
                         .WithMany("Products")
                         .HasForeignKey("NewsId");
@@ -628,18 +609,11 @@ namespace Rumassa.Infrastructure.Migrations
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
 
+                    b.Navigation("Category");
+
                     b.Navigation("News");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("Rumassa.Domain.Entities.ProductDetails", b =>
-                {
-                    b.HasOne("Rumassa.Domain.Entities.Product", "Product")
-                        .WithOne("ProductDetails")
-                        .HasForeignKey("Rumassa.Domain.Entities.ProductDetails", "ProductId");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Review", b =>
@@ -660,6 +634,11 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Navigation("Orders");
                 });
 
+            modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("Rumassa.Domain.Entities.News", b =>
                 {
                     b.Navigation("Products");
@@ -672,10 +651,6 @@ namespace Rumassa.Infrastructure.Migrations
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Product", b =>
                 {
-                    b.Navigation("Categories");
-
-                    b.Navigation("ProductDetails");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

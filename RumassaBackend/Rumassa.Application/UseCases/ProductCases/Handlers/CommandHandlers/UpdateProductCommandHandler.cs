@@ -28,7 +28,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
             {
                 if (request.Photos != null)
                 {
-                    var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, product.Name);
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, product.Name);
 
                     if (File.Exists(filePath))
                     {
@@ -69,6 +69,8 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                 }
 
                 product.Name = request.Name;
+                product.Price = request.Price;
+                product.CategoryId = request.CategoryId;
                 product.OrderId = request.OrderId;
                 product.NewsId = request.NewsId;
 

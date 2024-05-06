@@ -28,7 +28,6 @@ namespace Rumassa.Application.UseCases.CategoryCases.Handlers.CommandHandlers
             if (category != null)
             {
                 category.Name = request.Name;
-                category.ProductId = request.ProductId;
 
                 _context.Categories.Update(category);
 

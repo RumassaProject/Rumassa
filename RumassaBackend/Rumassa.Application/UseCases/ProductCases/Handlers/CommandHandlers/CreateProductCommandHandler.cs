@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Rumassa.Application.Abstractions;
-using Rumassa.Application.UseCases.NewsCases.Commands;
 using Rumassa.Application.UseCases.ProductCases.Commands;
 using Rumassa.Domain.Entities;
 using Rumassa.Domain.Entities.DTOs;
@@ -25,7 +23,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
             if (request != null)
             {
                 var photosFile = request.Photos;
-                string photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, request.Name);
+                string photoPath = Path.Combine(_webHostEnvironment.WebRootPath, request.Name);
                 string photoName = "";
                 List<string> photosPaths = new List<string>();
 
@@ -63,7 +61,9 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                 var product = new Product()
                 {
                     Name = request.Name,
+                    Price = request.Price,
                     PhotoPaths = photosPaths,
+                    CategoryId = request.CategoryId,
                     OrderId = request.OrderId,
                     NewsId = request.NewsId
                 };

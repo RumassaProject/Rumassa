@@ -27,7 +27,23 @@ namespace Rumassa.Infrastructure.Persistance
         public DbSet<News> News { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductDetails> ProductDetails { get; set; }
         public DbSet<Review> Reviews { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+
+            modelBuilder.Entity<Category>()
+                .HasData(
+                    [   new Category{ Id = 1, Name = "Оральные препараты"  },
+                        new Category{ Id = 2, Name = "Инъекционные препараты" },
+                        new Category{ Id = 3, Name = "Препараты ПКТ" },
+                        new Category{ Id = 4, Name = "Гормон роста" },
+                        new Category{ Id = 5, Name = "Сармы/Sarms" }
+                    ]
+                );
+        }
     }
 }

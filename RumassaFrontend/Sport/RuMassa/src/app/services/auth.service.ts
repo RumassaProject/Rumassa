@@ -40,7 +40,13 @@ export class AuthService {
           //localStorage.clear();
           localStorage.setItem(this.tokenKey, response.token)
         }
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/home']);
+            setTimeout(() => {
+            window.location.reload();
+            }, 1);
+        });
+
         return response;
       })
     );
