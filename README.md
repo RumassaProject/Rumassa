@@ -1,4 +1,2 @@
 # Rumassa
-npm install
-
-npm install jwt-decode
+https://docs.google.com/document/d/1hYkO-UhPEpJWek9pMnUpFUIomwxYdhVhzMHdvuiY4aQ/edit
