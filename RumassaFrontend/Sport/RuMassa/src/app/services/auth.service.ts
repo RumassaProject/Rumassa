@@ -65,10 +65,10 @@ export class AuthService {
   }
 
   loginWithGoogle(returnUrl: string) {
-    return this.http.post(`${this.apiUrl}Auth/ExternalLogin`, { provider: 'Google', returnUrl });
+    return this.http.post(`${this.apiUrl}Auth/ExternalLogin`, { provider: "Google", returnUrl });
   }
 
   loginWithFacebook(returnUrl: string) {
-    return this.http.post(`${this.apiUrl}Auth/ExternalLogin`, { provider: 'Facebook', returnUrl });
+    return this.http.post(`${this.apiUrl}Auth/ExternalLogin`, { provider: "Facebook", returnUrl });
   }
 }

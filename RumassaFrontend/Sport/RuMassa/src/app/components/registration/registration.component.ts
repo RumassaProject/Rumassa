@@ -61,11 +61,39 @@ export class RegistrationComponent {
     return password === confirmPassword;
   }
 
-  googleLogin(): void {
-    window.location.href = `${this.apiUrl}Auth/ExternalLogin`;
+  loginWithFacebook() {
+    const returnUrl = "~/"; // Provide return URL if needed
+    this.authService.loginWithFacebook(returnUrl).subscribe(
+      () => {
+        // Handle success
+      },
+      (error) => {
+        console.error('Error occurred during Facebook login:', error);
+        if (error.status === 400 && error.error && error.error.errors) {
+          console.error('Validation errors:', error.error.errors);
+          // Handle validation errors, e.g., display error messages to the user
+        } else {
+          // Handle other types of errors
+        }
+      }
+    );
   }
 
-  facebookLogin(): void {
-    window.location.href = `${this.apiUrl}Auth/ExternalLoginCallback`;
+  loginWithGoogle() {
+    const returnUrl = "~/"; // Provide return URL if needed
+    this.authService.loginWithGoogle(returnUrl).subscribe(
+      () => {
+        // Handle success
+      },
+      (error) => {
+        console.error('Error occurred during Google login:', error);
+        if (error.status === 400 && error.error && error.error.errors) {
+          console.error('Validation errors:', error.error.errors);
+          // Handle validation errors, e.g., display error messages to the user
+        } else {
+          // Handle other types of errors
+        }
+      }
+    );
   }
 }
