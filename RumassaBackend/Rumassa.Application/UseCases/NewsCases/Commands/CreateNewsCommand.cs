@@ -8,7 +8,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Commands
     {
         public string Title { get; set; }
         public IFormFile CardPhoto { get; set; }
-        public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
+        public string Date { get; set; }
         public string Description { get; set; }
         public Guid? UserId { get; set; }
     }
