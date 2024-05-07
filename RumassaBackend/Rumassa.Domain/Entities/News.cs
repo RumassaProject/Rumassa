@@ -12,7 +12,7 @@ namespace Rumassa.Domain.Entities
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string CardPhotoPath { get; set; }
-        public DateTimeOffset Date { get; set; }
+        public string Date { get; set; }
         public string Description { get; set; }
         public Guid? UserId { get; set; }
         public virtual User? User { get; set; }
